@@ -31,7 +31,6 @@ defmodule Main do
         |> String.replace(~r"( / )", "/")
 
       stats = String.split(data, " ") |> get_stats()
-      JSON.decode()
       IO.puts("Current stats : #{inspect(stats)}")
 
       mem_usage = get_floats(stats.mem_usage)
