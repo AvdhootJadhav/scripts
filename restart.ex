@@ -18,7 +18,7 @@ defmodule Main do
   @conversion %{"KiB" => 1, "MiB" => 2, "GiB" => 3}
 
   def main() do
-    name = "compassionate_moser"
+    name = "compassionate_moser" # replace with your container name
 
     shell = System.cmd("docker", ["stats", "#{name}", "--no-stream"])
     list = String.split(elem(shell, 0), "\n")
@@ -31,6 +31,7 @@ defmodule Main do
         |> String.replace(~r"( / )", "/")
 
       stats = String.split(data, " ") |> get_stats()
+      JSON.decode()
       IO.puts("Current stats : #{inspect(stats)}")
 
       mem_usage = get_floats(stats.mem_usage)
